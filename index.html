@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internal Marks Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-image: url("images/background-image.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .container {
+        text-align: center;
+        position: relative;
+        top: -180px;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px; /* Decreased padding */
+        border-radius: 5px; /* Decreased border radius */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Decreased box shadow */
+        color: #333;
+        max-width: 400px; /* Decreased max width */
+        width: 100%;
+        margin-bottom: 10px; /* Decreased margin */
+      }
+
+      .container h1 {
+        font-size: 24px; /* Decreased font size */
+        margin-bottom: 10px; /* Decreased margin */
+        color: #007bff;
+      }
+
+      .options {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .option {
+        flex: 1;
+        padding: 10px; /* Decreased padding */
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .option:hover {
+        transform: translateY(-3px); /* Decreased translateY */
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Decreased box shadow */
+      }
+
+      .option h2 {
+        color: #333;
+        font-size: 18px; /* Decreased font size */
+      }
+
+      .details-container {
+        text-align: left;
+        position: absolute;
+        bottom: 30px; /* Decreased bottom position */
+        right: 50%;
+        transform: translateX(50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px; /* Decreased padding */
+        border-radius: 5px; /* Decreased border radius */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Decreased box shadow */
+        max-width: 400px; /* Decreased max width */
+        width: auto;
+      }
+
+      .details-container h2 {
+        margin-bottom: 5px; /* Decreased margin */
+      }
+
+      .details-container p {
+        margin-bottom: 10px; /* Decreased margin */
+      }
+
+      .details-container .icon {
+        margin: 0 5px; /* Decreased margin */
+        display: inline-block;
+      }
+
+      .profile-image {
+        float: right;
+        margin-top: -5px; /* Decreased margin */
+        margin-left: 10px; /* Decreased margin */
+        border-radius: 5px; /* Decreased border radius */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Decreased box shadow */
+      }
+
+      /* Remove underlines from all anchor tags */
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Container for the other three webpages -->
+    <div class="details-container">
+      <h2>About Me</h2>
+      <img
+        src="/images/IMG_20240424_012601_081.jpg"
+        alt="Profile Image"
+        class="profile-image"
+        width="150"
+        height="150"
+      />
+      <p>
+        I am Dhruv Suthar, a student at CHANDIGARH UNIVERSITY as well as
+        developer passionate about creating meaningful and innovative projects.
+        With a focus on Android Development, Webdevelopment, , I strive to make
+        a positive impact through my work. Feel free to reach out to me at my
+        work mail for collaboration or just to say hello! MAIL
+        @dhruvsutar09@gmail.com
+      </p>
+
+      <!-- Icons with links -->
+      <a
+        href="https://www.instagram.com/void_dhruv.sutar?utm_source=qr&igsh=MTdpOW9qOTV3anV1dQ=="
+        class="icon"
+      >
+        <img
+          src="images/instagram_png.png"
+          alt="Instagram"
+          width="50"
+          height="50"
+        />
+      </a>
+      <a href="mailto:dhruvsutar09@gmail.com" class="icon">
+        <img src="/images/gmail-512.png" alt="Gmail" width="50" height="50" />
+      </a>
+      <a href="https://github.com/your_username" class="icon">
+        <img
+          src="/images/github-512.webp"
+          alt="GitHub"
+          width="50"
+          height="50"
+        />
+      </a>
+    </div>
+
+    <!-- Container for the current page -->
+    <div class="container">
+      <h1>....Calculate internal marks....</h1>
+      <div class="options">
+        <a href="hybrid_calculator.html" class="option">
+          <h2>Hybrid Subject Calculator</h2>
+        </a>
+        <a href="cad_workshop_calculator.html" class="option">
+          <h2>CAD, Workshop and DT Calculator</h2>
+        </a>
+        <a href="maths_biology_calculator.html" class="option">
+          <h2>Maths and Biology Calculator</h2>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
