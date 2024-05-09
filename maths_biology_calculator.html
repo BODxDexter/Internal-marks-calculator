@@ -13,85 +13,192 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #f3f3f3;
+        background-color: rgb(34, 34, 34);
       }
+
       .calculator {
         text-align: center;
         padding: 40px;
-        background-color: #fff;
+        background-color: rgb(51, 51, 51);
         border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 20px rgba(33, 33, 33);
         max-width: 600px;
-        width: 100%;
+        width: 70%;
+        color: white;
+        /* Add white shadow */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       }
+
       .calculator h1 {
         margin-bottom: 20px;
         font-size: 40px;
       }
-      .input-group {
+
+      .container {
+        position: relative;
         margin-bottom: 20px;
-        display: flex;
-        align-items: center;
       }
-      .input-group label {
-        flex: 1;
-        text-align: right; /* Adjusted alignment to left */
-        margin-right: 29px;
-        font-weight: bold;
-        font-size: 20px; /* Added font-size */
-        transition: font-size 0.3s; /* Adding transition */
+
+      .container .label {
+        font-size: 15px;
+        padding-left: 10px;
+        position: absolute;
+        top: 13px;
+        transition: 0.3s;
+        pointer-events: none;
+        color: #808080; /* Add a default color for the label */
       }
-      .input-group input {
-        flex: 2;
-        padding: 8px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        width: 100%;
+
+      .input {
+        width: 200px;
+        height: 45px;
+        border: none;
+        outline: none;
+        padding: 0px 7px;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 15px;
+        background-color: transparent;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+          -1px -1px 6px rgba(255, 255, 255, 0.4);
       }
-      .input-group input:focus + label {
-        font-size: 30px; /* Zoom effect */
+
+      .input:focus {
+        border: 2px solid transparent;
+        color: #fff;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+          -1px -1px 6px rgba(255, 255, 255, 0.4),
+          inset 3px 3px 10px rgba(0, 0, 0, 1),
+          inset -1px -1px 6px rgba(255, 255, 255, 0.4);
       }
+
+      .container .input:valid ~ .label,
+      .container .input:focus ~ .label {
+        transition: 0.3s;
+        padding-left: 2px;
+        top: 0;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #4caf50; /* Change color of label when input is focused */
+      }
+
+      .container .input:valid,
+      .container .input:focus {
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+          -1px -1px 6px rgba(255, 255, 255, 0.4),
+          inset 3px 3px 10px rgba(0, 0, 0, 1),
+          inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+      }
+
       .result {
         margin-top: 27px;
         font-size: 35px;
       }
+
       .calculate-btn {
-        background-color: #4caf50;
-        color: white;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 5px;
+        --color: #00a97f;
+        --color2: rgb(10, 25, 30);
+        padding: 0.8em 1.75em;
+        background-color: transparent;
+        border-radius: 6px;
+        border: 0.3px solid var(--color);
+        transition: 0.5s;
+        position: relative;
+        overflow: hidden;
         cursor: pointer;
-        font-size: 18px;
-        transition: background-color 0.3s;
+        z-index: 1;
+        font-weight: 300;
+        font-size: 17px;
+        font-family: "Roboto", "Segoe UI", sans-serif;
+        text-transform: uppercase;
+        color: var(--color);
       }
+
+      .calculate-btn::after,
+      .calculate-btn::before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        transform: skew(90deg) translate(-50%, -50%);
+        position: absolute;
+        inset: 50%;
+        left: 25%;
+        z-index: -1;
+        transition: 0.5s ease-out;
+        background-color: var(--color);
+      }
+
+      .calculate-btn::before {
+        top: -50%;
+        left: -25%;
+        transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+      }
+
+      .calculate-btn:hover::before {
+        transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+      }
+
+      .calculate-btn:hover::after {
+        transform: skew(45deg) translate(-50%, -50%);
+      }
+
       .calculate-btn:hover {
-        background-color: #45a049;
+        color: var(--color2);
+      }
+
+      .calculate-btn:active {
+        filter: brightness(0.7);
+        transform: scale(0.98);
       }
     </style>
   </head>
   <body>
     <div class="calculator">
       <h1>Maths and Biology Calculator</h1>
-      <div class="input-group">
-        <input type="number" id="assignment" name="assignment" required />
-        <label for="assignment">Assignment Marks(out of 10):</label>
+      <div class="container">
+        <input
+          type="number"
+          id="assignment"
+          name="assignment"
+          class="input"
+          required
+        />
+        <label for="assignment" class="label"
+          >Assignment Marks (out of 10):</label
+        >
       </div>
-      <div class="input-group">
-        <input type="number" id="attendance" name="attendance" required />
-        <label for="attendance">Attendance Marks(out of 2):</label>
+      <div class="container">
+        <input
+          type="number"
+          id="attendance"
+          name="attendance"
+          class="input"
+          required
+        />
+        <label for="attendance" class="label"
+          >Attendance Marks (out of 2):</label
+        >
       </div>
-      <div class="input-group">
-        <input type="number" id="case_study" name="case_study" required />
-        <label for="case_study">Case Study Marks(out of 16):</label>
+      <div class="container">
+        <input
+          type="number"
+          id="case_study"
+          name="case_study"
+          class="input"
+          required
+        />
+        <label for="case_study" class="label"
+          >Case Study Marks (out of 16):</label
+        >
       </div>
-      <div class="input-group">
-        <input type="number" id="mst_1" name="mst_1" required />
-        <label for="mst_1">MST 1 Marks(out of 20):</label>
+      <div class="container">
+        <input type="number" id="mst_1" name="mst_1" class="input" required />
+        <label for="mst_1" class="label">MST 1 Marks (out of 20):</label>
       </div>
-      <div class="input-group">
-        <input type="number" id="mst_2" name="mst_2" required />
-        <label for="mst_2">MST 2 Marks(out of 20):</label>
+      <div class="container">
+        <input type="number" id="mst_2" name="mst_2" class="input" required />
+        <label for="mst_2" class="label">MST 2 Marks (out of 20):</label>
       </div>
       <button class="calculate-btn" onclick="calculate()">Calculate</button>
       <div class="result" id="result"></div>
