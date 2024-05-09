@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hybrid Subject Calculator</title>
     <style>
+      /* Your existing CSS styles */
       body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -13,60 +14,136 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #f3f3f3;
+        background-color: #222; /* Dark theme background color */
+        color: #fff; /* Dark theme text color */
       }
+
       .calculator {
         text-align: center;
-        padding: 20px; /* Decreased padding */
-        background-color: #fff;
-        border-radius: 8px; /* Decreased border radius */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Decreased box shadow */
-        max-width: 400px; /* Decreased max-width */
+        padding: 40px;
+        background-color: #333; /* Dark theme calculator background color */
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Dark theme box shadow */
+        max-width: 600px;
         width: 100%;
       }
+
       .calculator h1 {
-        margin-bottom: 10px; /* Decreased margin */
-        font-size: 24px; /* Decreased font size */
+        margin-bottom: 20px;
+        font-size: 40px;
       }
+
       .input-group {
-        margin-bottom: 10px; /* Decreased margin */
+        margin-bottom: 20px;
         display: flex;
-        align-items: center;
-      }
-      .input-group label {
-        flex: 1;
-        text-align: right;
-        margin-right: 15px; /* Decreased margin */
-        font-weight: bold;
-        font-size: 16px; /* Decreased font size */
-        transition: font-size 0.3s;
-      }
-      .input-group input {
-        flex: 2;
-        padding: 6px; /* Decreased padding */
-        border-radius: 4px; /* Decreased border radius */
-        border: 1px solid #ccc;
-        width: 100%;
-      }
-      .input-group input:focus + label {
-        font-size: 18px; /* Decreased font size */
-      }
-      .result {
-        margin-top: 15px; /* Decreased margin */
-        font-size: 20px; /* Decreased font size */
-      }
-      .calculate-btn {
-        background-color: #4caf50;
+        flex-direction: column;
+        gap: 7px;
+        position: relative;
         color: white;
-        padding: 8px 16px; /* Decreased padding */
-        border: none;
-        border-radius: 4px; /* Decreased border radius */
-        cursor: pointer;
-        font-size: 14px; /* Decreased font size */
-        transition: background-color 0.3s;
       }
+
+      .input-group label {
+        font-size: 15px;
+        padding-left: 10px;
+        position: absolute;
+        top: 13px;
+        transition: 0.3s;
+        pointer-events: none;
+        color: #808080; /* Default color for labels */
+      }
+
+      .input-group input {
+        width: 300px;
+        height: 45px;
+        border: none;
+        outline: none;
+        padding: 0px 7px;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 15px;
+        background-color: transparent;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+          -1px -1px 6px rgba(255, 255, 255, 0.4);
+      }
+
+      .input-group input:focus {
+        border: 2px solid transparent;
+        color: #fff; /* Change text color to white when input is focused */
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+          -1px -1px 6px rgba(255, 255, 255, 0.4),
+          inset 3px 3px 10px rgba(0, 0, 0, 1),
+          inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+        padding-left: 20px; /* Add padding to shift text to the right */
+      }
+
+      .input-group input:focus + label,
+      .input-group input:valid + label {
+        padding-left: 400px; /* Adjust the padding as needed */
+        transition: padding-left 0.3s ease; /* Add transition effect */
+        color: #4caf50; /* Change label color to green when input is focused */
+      }
+
+      .result {
+        margin-top: 27px;
+        font-size: 35px;
+      }
+
+      .calculate-btn {
+        /* Your existing button styles */
+        --color: #00a97f;
+        --color2: rgb(10, 25, 30);
+        padding: 0.8em 1.75em;
+        background-color: transparent;
+        border-radius: 6px;
+        border: 0.3px solid var(--color);
+        transition: 0.5s;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        z-index: 1;
+        font-weight: 300;
+        font-size: 17px;
+        font-family: "Roboto", "Segoe UI", sans-serif;
+        text-transform: uppercase;
+        color: var(--color);
+      }
+
+      .calculate-btn::after,
+      .calculate-btn::before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        transform: skew(90deg) translate(-50%, -50%);
+        position: absolute;
+        inset: 50%;
+        left: 25%;
+        z-index: -1;
+        transition: 0.5s ease-out;
+        background-color: var(--color);
+      }
+
+      .calculate-btn::before {
+        top: -50%;
+        left: -25%;
+        transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+      }
+
+      .calculate-btn:hover::before {
+        transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+      }
+
+      .calculate-btn:hover::after {
+        transform: skew(45deg) translate(-50%, -50%);
+      }
+
       .calculate-btn:hover {
-        background-color: #45a049;
+        color: var(--color2);
+      }
+
+      .calculate-btn:active {
+        filter: brightness(0.7);
+        transform: scale(0.98);
       }
     </style>
   </head>
@@ -74,71 +151,160 @@
     <div class="calculator">
       <h1>Hybrid Subject Calculator</h1>
       <div class="input-group">
-        <input type="number" id="assignment" name="assignment" required />
-        <label for="assignment">Assignment Marks (out of 12):</label>
+        <input
+          type="number"
+          id="lab_mst"
+          name="lab_mst"
+          class="input"
+          required
+        />
+        <label for="lab_mst" id="lab_mst_label"
+          >Lab MST Marks (out of 15):</label
+        >
       </div>
       <div class="input-group">
-        <input type="number" id="attendance" name="attendance" required />
-        <label for="attendance">Attendance Marks:</label>
+        <input
+          type="number"
+          id="assessment_1"
+          name="assessment_1"
+          class="input"
+          required
+        />
+        <label for="assessment_1" id="assessment_1_label"
+          >Assessment 1 Marks (out of 15):</label
+        >
       </div>
       <div class="input-group">
-        <input type="number" id="case_study" name="case_study" required />
-        <label for="case_study">Case Study Marks (out of 16):</label>
+        <input
+          type="number"
+          id="assessment_2"
+          name="assessment_2"
+          class="input"
+          required
+        />
+        <label for="assessment_2" id="assessment_2_label"
+          >Assessment 2 Marks (out of 15):</label
+        >
       </div>
       <div class="input-group">
-        <input type="number" id="mst_1" name="mst_1" required />
-        <label for="mst_1">MST 1 Marks:</label>
-      </div>
-      <div class="input-group">
-        <input type="number" id="mst_2" name="mst_2" required />
-        <label for="mst_2">MST 2 Marks:</label>
+        <input
+          type="number"
+          id="assessment_3"
+          name="assessment_3"
+          class="input"
+          required
+        />
+        <label for="assessment_3" id="assessment_3_label"
+          >Assessment 3 Marks (out of 15):</label
+        >
       </div>
       <div class="input-group">
         <input
           type="number"
           id="end_sem_practical"
           name="end_sem_practical"
+          class="input"
           required
         />
-        <label for="end_sem_practical"
+        <label for="end_sem_practical" id="end_sem_practical_label"
           >End Sem Practical Marks (out of 40):</label
         >
       </div>
+      <!-- New Input Boxes -->
       <div class="input-group">
-        <input type="number" id="lab_mst" name="lab_mst" required />
-        <label for="lab_mst">Lab MST Marks (out of 15):</label>
+        <input
+          type="number"
+          id="assignment_marks"
+          name="assignment_marks"
+          class="input"
+          required
+        />
+        <label for="assignment_marks" id="assignment_marks_label"
+          >Assignment Marks (out of 12):</label
+        >
       </div>
       <div class="input-group">
-        <input type="number" id="assessment_1" name="assessment_1" required />
-        <label for="assessment_1">Assessment 1 Marks (out of 15):</label>
+        <input
+          type="number"
+          id="attendance_marks"
+          name="attendance_marks"
+          class="input"
+          required
+        />
+        <label for="attendance_marks" id="attendance_marks_label"
+          >Attendance Marks:</label
+        >
       </div>
       <div class="input-group">
-        <input type="number" id="assessment_2" name="assessment_2" required />
-        <label for="assessment_2">Assessment 2 Marks (out of 15):</label>
+        <input
+          type="number"
+          id="case_study_marks"
+          name="case_study_marks"
+          class="input"
+          required
+        />
+        <label for="case_study_marks" id="case_study_marks_label"
+          >Case Study Marks (out of 16):</label
+        >
       </div>
       <div class="input-group">
-        <input type="number" id="assessment_3" name="assessment_3" required />
-        <label for="assessment_3">Assessment 3 Marks (out of 15):</label>
+        <input
+          type="number"
+          id="mst_1_marks"
+          name="mst_1_marks"
+          class="input"
+          required
+        />
+        <label for="mst_1_marks" id="mst_1_marks_label"
+          >MST 1 Marks:</label
+        >
+      </div>
+      <div class="input-group">
+        <input
+          type="number"
+          id="mst_2_marks"
+          name="mst_2_marks"
+          class="input"
+          required
+        />
+        <label for="mst_2_marks" id="mst_2_marks_label"
+          >MST 2 Marks:</label
+        >
       </div>
       <button class="calculate-btn" onclick="calculate()">Calculate</button>
       <div class="result" id="result"></div>
     </div>
 
     <script>
+      // Function to change label color when input is focused
+      function changeLabelColor(inputId, labelId) {
+        var input = document.getElementById(inputId);
+        var label = document.getElementById(labelId);
+    
+        input.addEventListener("focus", function () {
+          label.style.color = "#4caf50"; // Change label color to green when input is focused
+        });
+    
+        input.addEventListener("blur", function () {
+          label.style.color = "#808080"; // Change label color back to default when input loses focus
+        });
+      }
+    
+      // Call function for each input box
+      changeLabelColor("lab_mst", "lab_mst_label");
+      changeLabelColor("assessment_1", "assessment_1_label");
+      changeLabelColor("assessment_2", "assessment_2_label");
+      changeLabelColor("assessment_3", "assessment_3_label");
+      changeLabelColor("end_sem_practical", "end_sem_practical_label");
+      changeLabelColor("assignment_marks", "assignment_marks_label");
+      changeLabelColor("attendance_marks", "attendance_marks_label");
+      changeLabelColor("case_study_marks", "case_study_marks_label");
+      changeLabelColor("mst_1_marks", "mst_1_marks_label");
+      changeLabelColor("mst_2_marks", "mst_2_marks_label");
+    
+      // Function to calculate total marks
       function calculate() {
-        var assignment = parseFloat(
-          document.getElementById("assignment").value
-        );
-        var attendance = parseFloat(
-          document.getElementById("attendance").value
-        );
-        var caseStudy = parseFloat(document.getElementById("case_study").value);
-        var mst1 = parseFloat(document.getElementById("mst_1").value);
-        var mst2 = parseFloat(document.getElementById("mst_2").value);
-        var endSemPractical = parseFloat(
-          document.getElementById("end_sem_practical").value
-        );
-        var labMst = parseFloat(document.getElementById("lab_mst").value);
+        var labMST = parseFloat(document.getElementById("lab_mst").value);
         var assessment1 = parseFloat(
           document.getElementById("assessment_1").value
         );
@@ -148,19 +314,31 @@
         var assessment3 = parseFloat(
           document.getElementById("assessment_3").value
         );
-
-        var a = (assignment / 12) * 6;
-        var s = (caseStudy / 16) * 8;
-        var m = (mst1 + mst2) / 4;
-        var e = (endSemPractical / 40) * 20;
-        var n = (labMst / 15) * 4;
-        var totalAssessment =
-          ((assessment1 + assessment2 + assessment3) / 3 / 15) * 20;
-
-        var total = a + m + attendance + s + e + n + totalAssessment;
-
+        var endSemPractical = parseFloat(
+          document.getElementById("end_sem_practical").value
+        );
+        var assignmentMarks = parseFloat(
+          document.getElementById("assignment_marks").value
+        );
+        var attendanceMarks = parseFloat(
+          document.getElementById("attendance_marks").value
+        );
+        var caseStudyMarks = parseFloat(
+          document.getElementById("case_study_marks").value
+        );
+        var mst1Marks = parseFloat(
+          document.getElementById("mst_1_marks").value
+        );
+        var mst2Marks = parseFloat(
+          document.getElementById("mst_2_marks").value
+        );
+    
+        var n = (labMST / 15) * 15;
+        var assessment = assessment1 + assessment2 + assessment3;
+        var total = assessment + n + endSemPractical + assignmentMarks + attendanceMarks + caseStudyMarks + mst1Marks + mst2Marks;
+    
         document.getElementById("result").innerHTML =
-          "Your internal marks are: " + total.toFixed(2);
+          "Your Internal marks are: " + total.toFixed(2);
       }
     </script>
   </body>
