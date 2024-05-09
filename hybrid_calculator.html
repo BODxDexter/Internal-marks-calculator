@@ -54,7 +54,7 @@
 
       .input-group input {
         width: 300px;
-        height: 45px;
+        height: 35px;
         border: none;
         outline: none;
         padding: 0px 7px;
@@ -162,6 +162,7 @@
           >Lab MST Marks (out of 15):</label
         >
       </div>
+      <!-- Add other input groups here -->
       <div class="input-group">
         <input
           type="number"
@@ -255,9 +256,7 @@
           class="input"
           required
         />
-        <label for="mst_1_marks" id="mst_1_marks_label"
-          >MST 1 Marks:</label
-        >
+        <label for="mst_1_marks" id="mst_1_marks_label">MST 1 Marks:</label>
       </div>
       <div class="input-group">
         <input
@@ -267,9 +266,7 @@
           class="input"
           required
         />
-        <label for="mst_2_marks" id="mst_2_marks_label"
-          >MST 2 Marks:</label
-        >
+        <label for="mst_2_marks" id="mst_2_marks_label">MST 2 Marks:</label>
       </div>
       <button class="calculate-btn" onclick="calculate()">Calculate</button>
       <div class="result" id="result"></div>
@@ -280,16 +277,16 @@
       function changeLabelColor(inputId, labelId) {
         var input = document.getElementById(inputId);
         var label = document.getElementById(labelId);
-    
+
         input.addEventListener("focus", function () {
           label.style.color = "#4caf50"; // Change label color to green when input is focused
         });
-    
+
         input.addEventListener("blur", function () {
           label.style.color = "#808080"; // Change label color back to default when input loses focus
         });
       }
-    
+
       // Call function for each input box
       changeLabelColor("lab_mst", "lab_mst_label");
       changeLabelColor("assessment_1", "assessment_1_label");
@@ -301,10 +298,24 @@
       changeLabelColor("case_study_marks", "case_study_marks_label");
       changeLabelColor("mst_1_marks", "mst_1_marks_label");
       changeLabelColor("mst_2_marks", "mst_2_marks_label");
-    
+
       // Function to calculate total marks
       function calculate() {
-        var labMST = parseFloat(document.getElementById("lab_mst").value);
+        var assignment = parseFloat(
+          document.getElementById("assignment_marks").value
+        );
+        var attendance = parseFloat(
+          document.getElementById("attendance_marks").value
+        );
+        var caseStudy = parseFloat(
+          document.getElementById("case_study_marks").value
+        );
+        var mst1 = parseFloat(document.getElementById("mst_1_marks").value);
+        var mst2 = parseFloat(document.getElementById("mst_2_marks").value);
+        var endSemPractical = parseFloat(
+          document.getElementById("end_sem_practical").value
+        );
+        var labMst = parseFloat(document.getElementById("lab_mst").value);
         var assessment1 = parseFloat(
           document.getElementById("assessment_1").value
         );
@@ -314,31 +325,19 @@
         var assessment3 = parseFloat(
           document.getElementById("assessment_3").value
         );
-        var endSemPractical = parseFloat(
-          document.getElementById("end_sem_practical").value
-        );
-        var assignmentMarks = parseFloat(
-          document.getElementById("assignment_marks").value
-        );
-        var attendanceMarks = parseFloat(
-          document.getElementById("attendance_marks").value
-        );
-        var caseStudyMarks = parseFloat(
-          document.getElementById("case_study_marks").value
-        );
-        var mst1Marks = parseFloat(
-          document.getElementById("mst_1_marks").value
-        );
-        var mst2Marks = parseFloat(
-          document.getElementById("mst_2_marks").value
-        );
-    
-        var n = (labMST / 15) * 15;
-        var assessment = assessment1 + assessment2 + assessment3;
-        var total = assessment + n + endSemPractical + assignmentMarks + attendanceMarks + caseStudyMarks + mst1Marks + mst2Marks;
-    
+
+        var a = (assignment / 12) * 6;
+        var s = (caseStudy / 16) * 8;
+        var m = (mst1 + mst2) / 4;
+        var e = (endSemPractical / 40) * 20;
+        var n = (labMst / 15) * 4;
+        var totalAssessment =
+          ((assessment1 + assessment2 + assessment3) / 3 / 15) * 20;
+
+        var total = a + m + attendance + s + e + n + totalAssessment;
+
         document.getElementById("result").innerHTML =
-          "Your Internal marks are: " + total.toFixed(2);
+          "Your internal marks are: " + total.toFixed(2);
       }
     </script>
   </body>
