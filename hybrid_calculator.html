@@ -44,9 +44,10 @@
 
       .input-group label {
         font-size: 15px;
-        padding-left: 10px;
+        padding-left: 350px;
+        text-align: right;
         position: absolute;
-        top: 13px;
+        top: 12px;
         transition: 0.3s;
         pointer-events: none;
         color: #808080; /* Default color for labels */
@@ -78,8 +79,6 @@
 
       .input-group input:focus + label,
       .input-group input:valid + label {
-        padding-left: 400px; /* Adjust the padding as needed */
-        transition: padding-left 0.3s ease; /* Add transition effect */
         color: #4caf50; /* Change label color to green when input is focused */
       }
 
@@ -301,30 +300,25 @@
 
       // Function to calculate total marks
       function calculate() {
-        var assignment = parseFloat(
-          document.getElementById("assignment_marks").value
-        );
-        var attendance = parseFloat(
-          document.getElementById("attendance_marks").value
-        );
-        var caseStudy = parseFloat(
-          document.getElementById("case_study_marks").value
-        );
-        var mst1 = parseFloat(document.getElementById("mst_1_marks").value);
-        var mst2 = parseFloat(document.getElementById("mst_2_marks").value);
-        var endSemPractical = parseFloat(
-          document.getElementById("end_sem_practical").value
-        );
-        var labMst = parseFloat(document.getElementById("lab_mst").value);
-        var assessment1 = parseFloat(
-          document.getElementById("assessment_1").value
-        );
-        var assessment2 = parseFloat(
-          document.getElementById("assessment_2").value
-        );
-        var assessment3 = parseFloat(
-          document.getElementById("assessment_3").value
-        );
+        var assignment =
+          parseFloat(document.getElementById("assignment_marks").value) || 0;
+        var attendance =
+          parseFloat(document.getElementById("attendance_marks").value) || 0;
+        var caseStudy =
+          parseFloat(document.getElementById("case_study_marks").value) || 0;
+        var mst1 =
+          parseFloat(document.getElementById("mst_1_marks").value) || 0;
+        var mst2 =
+          parseFloat(document.getElementById("mst_2_marks").value) || 0;
+        var endSemPractical =
+          parseFloat(document.getElementById("end_sem_practical").value) || 0;
+        var labMst = parseFloat(document.getElementById("lab_mst").value) || 0;
+        var assessment1 =
+          parseFloat(document.getElementById("assessment_1").value) || 0;
+        var assessment2 =
+          parseFloat(document.getElementById("assessment_2").value) || 0;
+        var assessment3 =
+          parseFloat(document.getElementById("assessment_3").value) || 0;
 
         var a = (assignment / 12) * 6;
         var s = (caseStudy / 16) * 8;
