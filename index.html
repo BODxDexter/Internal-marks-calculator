@@ -13,7 +13,7 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background-image: url("background-image.jpg");
+        background-image: url("/images/background-image.jpg");
         background-size: cover;
         background-position: center;
         position: relative;
@@ -25,18 +25,18 @@
         top: -180px;
         z-index: 1;
         background-color: rgba(255, 255, 255, 0.8);
-        padding: 10px; /* Decreased padding */
-        border-radius: 5px; /* Decreased border radius */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Decreased box shadow */
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         color: #333;
-        max-width: 400px; /* Decreased max width */
+        max-width: 400px;
         width: 100%;
-        margin-bottom: 10px; /* Decreased margin */
+        margin-bottom: 10px;
       }
 
       .container h1 {
-        font-size: 24px; /* Decreased font size */
-        margin-bottom: 10px; /* Decreased margin */
+        font-size: 24px;
+        margin-bottom: 10px;
         color: #007bff;
       }
 
@@ -47,7 +47,7 @@
 
       .option {
         flex: 1;
-        padding: 10px; /* Decreased padding */
+        padding: 10px;
         background-color: #fff;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -55,66 +55,64 @@
       }
 
       .option:hover {
-        transform: translateY(-3px); /* Decreased translateY */
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Decreased box shadow */
+        transform: translateY(-3px);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
       }
 
       .option h2 {
         color: #333;
-        font-size: 18px; /* Decreased font size */
+        font-size: 18px;
       }
 
       .details-container {
         text-align: left;
         position: absolute;
-        bottom: 30px; /* Decreased bottom position */
+        bottom: 30px;
         right: 50%;
         transform: translateX(50%);
         background-color: rgba(255, 255, 255, 0.8);
-        padding: 10px; /* Decreased padding */
-        border-radius: 5px; /* Decreased border radius */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Decreased box shadow */
-        max-width: 400px; /* Decreased max width */
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
         width: auto;
       }
 
       .details-container h2 {
-        margin-bottom: 5px; /* Decreased margin */
+        margin-bottom: 5px;
       }
 
       .details-container p {
-        margin-bottom: 10px; /* Decreased margin */
+        margin-bottom: 10px;
       }
 
       .details-container .icon {
-        margin: 0 5px; /* Decreased margin */
+        margin: 0 5px;
         display: inline-block;
       }
 
       .profile-image {
         float: right;
-        margin-top: -5px; /* Decreased margin */
-        margin-left: 10px; /* Decreased margin */
-        border-radius: 5px; /* Decreased border radius */
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Decreased box shadow */
+        margin-top: -5px;
+        margin-left: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
       }
 
-      /* Remove underlines from all anchor tags */
       a {
         text-decoration: none;
       }
     </style>
   </head>
   <body>
-    <!-- Container for the other three webpages -->
     <div class="details-container">
       <h2>About Me</h2>
       <img
-        src="IMG_20240424_012601_081.jpg"
+        src="/images/IMG_20240512_183914.jpg"
         alt="Profile Image"
         class="profile-image"
         width="150"
-        height="150"
+        height="170"
       />
       <p>
         I am Dhruv Suthar, a student at CHANDIGARH UNIVERSITY as well as
@@ -125,24 +123,23 @@
         @dhruvsutar09@gmail.com
       </p>
 
-      <!-- Icons with links -->
       <a
         href="https://www.instagram.com/void_dhruv.sutar?utm_source=qr&igsh=MTdpOW9qOTV3anV1dQ=="
         class="icon"
       >
         <img
-          src="instagram_png.png"
+          src="/images/instagram_png.png"
           alt="Instagram"
           width="50"
           height="50"
         />
       </a>
       <a href="mailto:dhruvsutar09@gmail.com" class="icon">
-        <img src="gmail-512.png" alt="Gmail" width="50" height="50" />
+        <img src="/images/gmail-512.png" alt="Gmail" width="50" height="50" />
       </a>
-      <a href="https://github.com/DEVxWizard" class="icon">
+      <a href="https://github.com/your_username" class="icon">
         <img
-          src="github-512.webp"
+          src="/images/github-512.webp"
           alt="GitHub"
           width="50"
           height="50"
@@ -150,7 +147,6 @@
       </a>
     </div>
 
-    <!-- Container for the current page -->
     <div class="container">
       <h1>....Calculate internal marks....</h1>
       <div class="options">
